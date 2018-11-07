@@ -127,32 +127,32 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-simulator_template.out \
+Vezba3b_sim.out \
 
 EXE_OUTPUTS__QUOTED += \
-"simulator_template.out" \
+"Vezba3b_sim.out" \
 
 BIN_OUTPUTS += \
-simulator_template.hex \
+Vezba3b_sim.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"simulator_template.hex" \
+"Vezba3b_sim.hex" \
 
 
 # All Target
-all: simulator_template.out
+all: Vezba3b_sim.out
 
 # Tool invocations
-simulator_template.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+Vezba3b_sim.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: C5500 Linker'
-	"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/bin/cl55" -v5515 --memory_model=large -g --define=c5535 --display_error_number --diag_warning=225 --ptrdiff_size=16 -z -m"simulator_template.map" --stack_size=0x200 --heap_size=0x400 -i"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/lib" -i"C:/Users/stefa/workspace_v6_1/simulator_template/c55xx_csl/lib" -i"C:/Users/stefa/workspace_v6_1/simulator_template/lib" -i"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/include" --reread_libs --display_error_number --warn_sections --xml_link_info="simulator_template_linkInfo.xml" --rom_model --sys_stacksize=0x200 -o "simulator_template.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/bin/cl55" -v5515 --memory_model=large -g --define=c5535 --display_error_number --diag_warning=225 --ptrdiff_size=16 -z -m"Vezba3b_sim.map" --stack_size=0x200 --heap_size=0x400 -i"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/lib" -i"C:/Users/stefa/workspace_v6_1/Vezba3b_sim/c55xx_csl/lib" -i"C:/Users/stefa/workspace_v6_1/Vezba3b_sim/lib" -i"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/include" --reread_libs --display_error_number --warn_sections --xml_link_info="Vezba3b_sim_linkInfo.xml" --rom_model --sys_stacksize=0x200 -o "Vezba3b_sim.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-simulator_template.hex: $(EXE_OUTPUTS)
+Vezba3b_sim.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: C5500 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/bin/hex55"  -o "simulator_template.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv6/tools/compiler/c5500_4.4.1/bin/hex55"  -o "Vezba3b_sim.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 

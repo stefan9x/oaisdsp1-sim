@@ -28,10 +28,11 @@ Int16 left_input[BUFFER_LENGTH];
 Int16 right_input[BUFFER_LENGTH];
 Int16 left_output[BUFFER_LENGTH];
 Int16 right_output[BUFFER_LENGTH];
-Int16 buffer_48k[BUFFER_LENGTH];
+
 Int16 buffer_24k[BUFFER_LENGTH];
 Int16 buffer_16k[BUFFER_LENGTH];
 Int16 buffer_8k[BUFFER_LENGTH];
+Int16 cir_buff_data[1024];
 
 
 typedef struct CircularBuffer_
@@ -98,7 +99,7 @@ void main( void )
     aic3204_hardware_init();
 
 	aic3204_set_input_filename("../dual_sine_6kHz_10kHz.pcm");
-	aic3204_set_output_filename("../output48.pcm");
+	aic3204_set_output_filename("../output48k.pcm");
 
     /* Initialise the AIC3204 codec */
 	aic3204_init();
@@ -107,6 +108,9 @@ void main( void )
 	// Ne radi na simulatoru
     set_sampling_frequency_and_gain(FS_48kHz, GAIN_IN_dB);
 
+    // Zadatak 4
+    circular_buffer_init(&cbuf, cir_buff_data, 1024);
+
 	/* Loop 10s */
 	for(i = 0; i < FS_48kHz/BUFFER_LENGTH * 10L; i++)
 	{
@@ -114,7 +118,7 @@ void main( void )
 
 		for(j = 0; j < BUFFER_LENGTH; j++)
 		{
-			buffer_48k[j] = left_input[j];
+			left_output[j] = left_input[j]; //48kHz
 
 			// Radjeno iz razloga sto simulator ne podrzava promjenu frekvencije odabiranja
 			if (j < BUFFER_LENGTH / 6)
@@ -127,7 +131,14 @@ void main( void )
 				buffer_24k[j] = left_input[j*2];
 		}
 
-		aic3204_write_block(buffer_48k, buffer_48k);
+		// Zadatak 4
+		/*for(j = 0; j < BUFFER_LENGTH; j++)
+		{
+			circular_buffer_write(&cbuf, left_input[j]);
+			left_output[j] = circular_buffer_read(&cbuf);
+		}*/
+
+		aic3204_write_block(left_output, left_output);
 	}
 
 	/* Disable I2S and put codec into reset */
