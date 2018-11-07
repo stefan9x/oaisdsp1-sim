@@ -31,6 +31,8 @@ void main( void )
 
 	/* Your code here */
 
+	// NAPOMENA: postavite brakepoint posle funkcije ciji buffer zelite da prikazete na grafu
+
 	// Zadatak 1
 	// gen_sinus(broj odbiraka, amplituda, frekvencija, fazni pomeraj, buffer)
 
