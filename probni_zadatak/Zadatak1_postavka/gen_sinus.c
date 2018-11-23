@@ -18,16 +18,16 @@
 void gen_sinus_table(Int16 n, float a, float f, Int16 ph, float buffer[])
 {
 	// TO DO
-	int i=0;
-	int delta = f * SINE_TABLE_SIZE;
-	int k = ph * delta;
-	int mask = SINE_TABLE_SIZE - 1;
+	Int16 i=0;
+	Int16 delta = f * SINE_TABLE_SIZE;
+	Int16 mask = SINE_TABLE_SIZE - 1;
+	Int16 k = (Int16)(((Int32)ph*delta) & mask);
 
 	for (i=0; i<SINE_TABLE_SIZE; i++)
 	{
 		k = k & mask;
 
-		if (i < SINE_TABLE_SIZE/4)
+		if (i <= SINE_TABLE_SIZE/4)
 		{
 			buffer[i] = a*p_sine_table[k];
 		}

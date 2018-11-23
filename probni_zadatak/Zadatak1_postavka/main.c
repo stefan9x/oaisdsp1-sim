@@ -103,27 +103,25 @@ void main( void )
 
 			    // TO DO
 				// Pass tone through ADSR unit
-				ADSR(tempBuffer, BLOCK_SIZE, (i - current_tone_ch[j]->time), current_tone_ch[j]->duration);
+				ADSR(tempBuffer, BLOCK_SIZE, (i - current_tone_ch[j]->time), current_tone_ch[j]->duration*BLOCK_SIZE);
 				// TO DO
 
 				// Perform quantization and clipping of generated signal
+				// Add the result to outputBuffer
+				// TO DO
 				for(k = 0; k < BLOCK_SIZE; k++)
 				{
 					tempBuffer2[k] = quantB(tempBuffer[k], 15);
 					tempBuffer2[k] = clipB(tempBuffer2[k], 14);
+					outputBuffer[k] += tempBuffer2[k];
 
 				}
-				// Add the result to outputBuffer
-				// TO DO
-				memcpy(outputBuffer, tempBuffer2, sizeof(Int16) * 197);
 
 				// If current tone is finished, increment current tone ptr
 				if((i - current_tone_ch[j]->time) >= (current_tone_ch[j]->duration - 1))
 				{
 					current_tone_ch[j]++;
 				}
-
-
 			}
 		}
 
