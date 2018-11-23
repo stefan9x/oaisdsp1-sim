@@ -99,12 +99,15 @@ void main( void )
 				// Generate sine wave using frequency of a current tone
 				// Phase is number of samples passed since tone has started playing
 				// Amplitude is 1.0
-				gen_sinus_table(BLOCK_SIZE, 1.0, note_to_freq(current_tone_ch[j]->note)/SAMPLE_RATE, (i-current_tone_ch[j]->time) * BLOCK_SIZE, tempBuffer);
-
-			    // TO DO
-				// Pass tone through ADSR unit
-				ADSR(tempBuffer, BLOCK_SIZE, (i - current_tone_ch[j]->time), current_tone_ch[j]->duration*BLOCK_SIZE);
 				// TO DO
+				float frequency = note_to_freq(current_tone_ch[j]->note)/SAMPLE_RATE;
+				Int16 phase = (i-current_tone_ch[j]->time) * BLOCK_SIZE;
+				gen_sinus_table(BLOCK_SIZE, 1.0, frequency, phase, tempBuffer);
+
+				// Pass tone through ADSR unit
+				// TO DO
+				Int16 duration = current_tone_ch[j]->duration * BLOCK_SIZE;
+				ADSR(tempBuffer, BLOCK_SIZE, phase, duration);
 
 				// Perform quantization and clipping of generated signal
 				// Add the result to outputBuffer
@@ -112,9 +115,7 @@ void main( void )
 				for(k = 0; k < BLOCK_SIZE; k++)
 				{
 					tempBuffer2[k] = quantB(tempBuffer[k], 15);
-					tempBuffer2[k] = clipB(tempBuffer2[k], 14);
-					outputBuffer[k] += tempBuffer2[k];
-
+					outputBuffer[k] += clipB(tempBuffer2[k], 14);
 				}
 
 				// If current tone is finished, increment current tone ptr
