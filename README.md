@@ -15,4 +15,4 @@
 3. Pokrenuti CCS i izabrati workspace folder
 4. Importovati gotovu vježbu ili prazan simulator_template_fixed(ako želite da sami kucate)
 
-  **NAPOMENA: Uvijek čekirajte *"Copy projects into workspace"* da bi vam kopirao projekat u vas workspace**
+  **NAPOMENA: Uvijek čekirajte *"Copy projects into workspace"* da bi vam kopirao projekat u vaš workspace**
