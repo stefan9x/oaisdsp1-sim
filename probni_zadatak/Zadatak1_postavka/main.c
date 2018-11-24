@@ -18,6 +18,7 @@
 #include "gen_sinus.h"
 #include "fur_elise.h"
 #include "quant.h"
+#include "math.h"
 
 #define BLOCK_SIZE 197
 #define SAMPLE_RATE 44100
@@ -30,7 +31,22 @@ Int16 outputBuffer[BLOCK_SIZE];
 
 float tempBuffer[BLOCK_SIZE];
 Int16 tempBuffer2[BLOCK_SIZE];
+float tone[BLOCK_SIZE];
+float noise[BLOCK_SIZE];
 
+float calculate_snr(float* signal, float* noise, Uint16 n)
+{
+	/* Your code here*/
+	// Zadatak 2
+	int i = 0;
+	float Ps = 0, Pe = 0;
+	for (i = 0; i < n; i++)
+	{
+		Ps += (signal[i] * signal[i]) / n;
+		Pe += (noise[i] * noise[i]) / n;
+	}
+	return 10 * log10(Ps/Pe);
+}
 
 /*
  *
@@ -104,6 +120,11 @@ void main( void )
 				Int16 phase = (i-current_tone_ch[j]->time) * BLOCK_SIZE;
 				gen_sinus_table(BLOCK_SIZE, 1.0, frequency, phase, tempBuffer);
 
+				for(k = 0; k < BLOCK_SIZE; k++)
+				{
+					tone[k] = tempBuffer[k];
+				}
+
 				// Pass tone through ADSR unit
 				// TO DO
 				Int16 duration = current_tone_ch[j]->duration * BLOCK_SIZE;
@@ -117,6 +138,13 @@ void main( void )
 					tempBuffer2[k] = quantB(tempBuffer[k], 15);
 					outputBuffer[k] += clipB(tempBuffer2[k], 14);
 				}
+
+				for(k = 0; k < BLOCK_SIZE; k++)
+				{
+					noise[k] = (outputBuffer[k] - tone[k]);
+				}
+				float SNR = calculate_snr(tone, noise, BLOCK_SIZE);
+				printf("Tone: %s, Freq: %.4f(%.2fHz), SNR: %f\n", note_to_string(current_tone_ch[j]->note), frequency, frequency*SAMPLE_RATE, SNR);
 
 				// If current tone is finished, increment current tone ptr
 				if((i - current_tone_ch[j]->time) >= (current_tone_ch[j]->duration - 1))
