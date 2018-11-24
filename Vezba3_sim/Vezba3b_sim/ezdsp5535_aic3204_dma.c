@@ -45,5 +45,5 @@ void aic3204_write_block(Int16* buffer_left, Int16* buffer_right)
 		SimulatorOutput[4*i+2] = buffer_right[i] & 0x00FF;
 		SimulatorOutput[4*i+3] = buffer_right[i] >> 8;
 	}
-	fwrite(SimulatorOutput, sizeof(Int16), AUDIO_IO_SIZE*2, output_file);
+	fwrite(SimulatorOutput, sizeof(Int16), AUDIO_IO_SIZE*4, output_file);
 }
