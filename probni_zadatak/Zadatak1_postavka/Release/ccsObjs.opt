@@ -1,0 +1,1 @@
+"./ADSR.obj" "./aic3204.obj" "./aic3204_init.obj" "./ezdsp5535_aic3204_dma.obj" "./fur_elise.obj" "./gen_sinus.obj" "./main.obj" "./notes.obj" "./quant.obj" "./sine_table.obj" "../C5535.cmd" "../lib/ezdsp5535bsl.lib" "../c55xx_csl/lib/cslVC5505.lib" -l"libc.a" 

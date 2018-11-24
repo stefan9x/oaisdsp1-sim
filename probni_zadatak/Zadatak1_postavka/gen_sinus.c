@@ -23,7 +23,7 @@ void gen_sinus_table(Int16 n, float a, float f, Int16 ph, float buffer[])
 	Int16 mask = SINE_TABLE_SIZE - 1;
 	Int16 k = (Int16)(((Int32)ph*delta) & mask);
 
-	for (i=0; i<SINE_TABLE_SIZE; i++)
+	for (i=0; i<n; i++)
 	{
 		k = k & mask;
 

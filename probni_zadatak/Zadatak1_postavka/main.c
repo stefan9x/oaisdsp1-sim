@@ -54,7 +54,7 @@ void main( void )
     /* Initialise hardware interface and I2C for code */
     aic3204_hardware_init();
 
-	aic3204_set_output_filename("../output.pcm");
+	aic3204_set_output_filename("../furElise.pcm");
 
     /* Initialise the AIC3204 codec */
 	aic3204_init();
