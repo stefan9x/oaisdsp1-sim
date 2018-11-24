@@ -1,4 +1,4 @@
-#Uputstvo za instalaciju CCS i podešavanje simulatora
+# Uputstvo za instalaciju CCS i podešavanje simulatora
 
 ## Instalacija
 1. Skinuti [CCS](https://drive.google.com/open?id=1NJY_LQo38X-43U9llRHQ2AaihxmFXqRA) i raspakovati
