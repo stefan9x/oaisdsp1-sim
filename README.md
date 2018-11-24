@@ -6,11 +6,13 @@
 3. Pod **Processor Support** prosiriti **Single Core DSPs** i izabrati **C55x Device Support** i **TI C55x Compiler**. (Možete izabrati sve ako niste sigurni, ali nema potrebe)
 4. Ostalo sve default.
 5. Nakon instalacije kopirati foldere **common** i **simulation** iz foldera **CCS6 patch** u folder **ccs_base** koji se nalazi tamo gdje ste instalirali CCS (default putanja C:\ti\ccsv6\)
-	**NAPOMENA: nemojte koristiti simulator template koji dodje u CCS.rar fajlu**
+
+  **NAPOMENA: nemojte koristiti simulator template koji dodje u CCS.rar fajlu**
 	
 ## Pokretanje simulatora
 1. Skinuti repozitorijum klikom na **Clone or download** -> **Download ZIP**
 2. Raspakovati zip
 3. Pokrenuti CCS i izabrati workspace folder
 4. Importovati gotovu vjezbu ili prazan simulator_template_fixed(ako zelite da sami kucate)
-	**NAPOMENA: Uvijek čekirajte *Copy projects into workspace* da bi vam kopirao projekat u vas workspace**
+
+  **NAPOMENA: Uvijek čekirajte *Copy projects into workspace* da bi vam kopirao projekat u vas workspace**
