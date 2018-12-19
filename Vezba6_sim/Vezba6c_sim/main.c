@@ -41,7 +41,7 @@ void main( void )
 	/* Initialize BSL */
     EZDSP5535_init( );
 
-    printf("\n Simulator loopback \n");
+    printf("\n Vezba 6c - Simulator \n");
 
     /* Initialise hardware interface and I2C for code */
     aic3204_hardware_init();

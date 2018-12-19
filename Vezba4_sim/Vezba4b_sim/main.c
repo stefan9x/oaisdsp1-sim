@@ -16,11 +16,6 @@
 #include "ezdsp5535_aic3204_dma.h"
 #include "vezba4.h"
 
-Int16 left_input;
-Int16 right_input;
-Int16 left_output;
-Int16 right_output;
-
 #pragma DATA_ALIGN(InputBufferL,4)
 Int16 InputBufferL[AUDIO_IO_SIZE];
 #pragma DATA_ALIGN(InputBufferR,4)
@@ -32,7 +27,6 @@ Int16 OutputBufferL[AUDIO_IO_SIZE];
 Int16 OutputBufferR[AUDIO_IO_SIZE];
 
 #define SAMPLES_PER_SECOND 48000
-#define BUFFER_LENGTH 1000
 #define GAIN_IN_dB 0
 
 /*
@@ -46,7 +40,7 @@ void main( void )
     /* Initialize BSL */
     EZDSP5535_init( );
 
-    printf("\n Simulator loopback \n");
+    printf("\n Vezba 4b - Simulator \n");
 
     /* Initialise hardware interface and I2C for code */
     aic3204_hardware_init();

@@ -16,7 +16,6 @@
 #include "ezdsp5535_aic3204_dma.h"
 
 #define SAMPLES_PER_SECOND 48000
-#define BUFFER_LENGTH 1000
 #define GAIN_IN_dB 0
 
 #pragma DATA_ALIGN(InputBufferL,4)
@@ -40,7 +39,7 @@ void main( void )
     /* Initialize BSL */
     EZDSP5535_init( );
 
-    printf("\n Simulator loopback \n");
+    printf("\n Vezba 2 - Simulator \n");
 
     /* Initialise hardware interface and I2C for code */
     aic3204_hardware_init();
