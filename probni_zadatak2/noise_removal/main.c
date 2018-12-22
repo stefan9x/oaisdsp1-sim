@@ -91,7 +91,7 @@ void main( void )
 
     aic3204_set_input_filename("../signal.wav");
 
-    aic3204_set_output_filename("../Zadatak5.wav");
+    aic3204_set_output_filename("../Zadatak4.wav");
 
     // Initialise the AIC3204 codec
 	aic3204_init();
@@ -131,8 +131,8 @@ void main( void )
 	// Zadatak 4
 	for (i = 0; i < 3; i++)
 	{
-		/*z_x[i] = 0;
-		z_y[i] = 0;*/
+		z_x[i] = 0;
+		z_y[i] = 0;
 
 		// Zadatak 5
 		z_xL[i] = 0;
@@ -157,15 +157,15 @@ void main( void )
 			//outputBufferL[j] = fir_circular(inputBufferL[j], band_pass_121st_order, historyL, Ntap, &p_stateL);
 
     		// Zadatak 4
-    		//impulseOut[j] = second_order_IIR(impulse[j], IIR_band_pass_2nd_order, z_x, z_y);
-     		//outputBufferL[j] = second_order_IIR(inputBufferL[j], IIR_all_pass_2nd_order, z_x, z_y);
+    		impulseOut[j] = second_order_IIR(impulse[j], IIR_band_pass_2nd_order, z_x, z_y);
+     		//outputBufferL[j] = second_order_IIR(inputBufferL[j], IIR_band_pass_2nd_order, z_x, z_y);
 
     		// Zadatak 5
-    		/*temp[j] = second_order_IIR(impulse[j], IIR_low_pass_2nd_order, z_xL, z_yL);
-    		impulseOut[j] = second_order_IIR(temp[j], IIR_high_pass_2nd_order, z_xR, z_yR);*/
+    		//temp[j] = second_order_IIR(impulse[j], IIR_low_pass_2nd_order, z_xL, z_yL);
+    		//impulseOut[j] = second_order_IIR(temp[j], IIR_high_pass_2nd_order, z_xR, z_yR);
 
-			temp[j] = second_order_IIR(inputBufferL[j], IIR_low_pass_2nd_order, z_xL, z_yL);
-			outputBufferL[j] = second_order_IIR(temp[j], IIR_high_pass_2nd_order, z_xR, z_yR);
+			//temp[j] = second_order_IIR(inputBufferL[j], IIR_low_pass_2nd_order, z_xL, z_yL);
+			//outputBufferL[j] = second_order_IIR(temp[j], IIR_high_pass_2nd_order, z_xR, z_yR);
 
     	}
     	aic3204_write_block(outputBufferL, outputBufferL);
