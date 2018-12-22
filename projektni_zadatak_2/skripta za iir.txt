@@ -1,0 +1,19 @@
+****************************************************
+r = 0.95;
+f = 4000; %frekvencija
+fs = 16000; %frekvencija odabiranja
+
+
+A(1) = 1 * 32767;
+A(2) = round(-cos(2 * 3.14 * f/fs) * 32767);
+A(3) = 1 * 32767;
+A(4) = 1 * 32767;
+A(5) = round(-r * cos(2 * 3.14 * f/fs) * 32767);
+A(6) = round(r * r * 32767);
+
+A
+
+****************************************************
+
+Mozete pokrenuti kod u matlabu ili online na linku:
+http://www.compileonline.com/execute_matlab_online.php
