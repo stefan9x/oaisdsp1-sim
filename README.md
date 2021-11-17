@@ -1,8 +1,8 @@
 # Uputstvo za instalaciju CCS i podešavanje simulatora
 
 ## Instalacija
-1. Skinuti [CCS](https://drive.google.com/open?id=1NJY_LQo38X-43U9llRHQ2AaihxmFXqRA) i raspakovati
-2. Pokrenuti **ccs_setup_6.1.0.00104.exe**
+1. Skinuti [CCS](https://drive.google.com/file/d/1rL_pEQjOGyCzGNipdwE42jQkOQdXKiu8/view?usp=sharing) i raspakovati
+2. Pokrenuti **ccs_setup_6.1.3.00034.exe**
 3. Pod **Processor Support** proširiti **Single Core DSPs** i izabrati **C55x Device Support** i **TI C55x Compiler**. (Možete izabrati sve ako niste sigurni, ali nema potrebe)
 4. Ostalo sve default.
 5. Nakon instalacije kopirati foldere **common** i **simulation** iz foldera **CCS6 patch** u folder **ccs_base** koji se nalazi tamo gdje ste instalirali CCS (default putanja C:\ti\ccsv6\)
